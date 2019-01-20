@@ -17,11 +17,19 @@ public class SqlQuery {
 	public static final int DESIRED_TEST_NAME_POSITION = 4;
 	public static final int DATE_POSITION = 5;
 	public static final int MARK_POSITION = 6;
+	public static final int RESULT_DATE_POSITION = 3;
+	public static final int RESULT_MARK_POSITION = 4;
 
-	public static final String GET_AVG_MARK = "SELECT logins.name AS login, AVG(mark) AS avgMark"  
-			+ "FROM results JOIN logins ON idLogin=loginId"   
-			+ "GROUP BY login"  
-			+ "ORDER BY avgMark DESC";
+	public static final String GET_AVG_MARK = "SELECT logins.name AS login, AVG(mark) AS avgMark "
+			+ "FROM results "
+			+ "JOIN logins ON idLogin=loginId "
+			+ "GROUP BY login ORDER BY avgMark DESC";
+	public static final String GET_RESULTS_BY_DATE = "SELECT logins.name, tests.name, dat, mark " + 
+			"FROM results " + 
+			"JOIN logins ON loginId = idLogin " + 
+			"JOIN tests ON testId = idTest " + 
+			"WHERE (SELECT MONTH(dat) = MONTH(NOW()) + 2) " + 
+			"ORDER BY dat";
 
 
 }
