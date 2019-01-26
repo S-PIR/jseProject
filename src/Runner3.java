@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +17,7 @@ import by.gsu.epamlab.beans.Result;
 import static by.gsu.epamlab.constants.Constants.*;
 import static by.gsu.epamlab.constants.SqlQuery.*;
 
-public class Runner1 {
+public class Runner3 {
 
 	public static void main(String[] args) {
 		Scanner sc = null;
@@ -27,7 +26,7 @@ public class Runner1 {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			sc = new Scanner(new FileReader(INPUT_CSV));
+			sc = new Scanner(new FileReader(INPUT_CSV_3));
 			sc.useLocale(Locale.ENGLISH);
 			con = ConnectionManager.createConnection();
 			st = con.createStatement();
@@ -97,7 +96,6 @@ public class Runner1 {
 			ConnectionManager.closePreparedStatement(ps);
 			ConnectionManager.closeConnection(con);
 		}
-
 	}
 
 }
