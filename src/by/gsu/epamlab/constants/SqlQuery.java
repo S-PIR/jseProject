@@ -20,6 +20,10 @@ public class SqlQuery {
 	public static final int RESULT_DATE_POSITION = 3;
 	public static final int RESULT_MARK_POSITION = 4;
 
+	public static final String GET_AVG_MARK_FOR_RESULT = "SELECT logins.name AS login, AVG(mark) AS avgMark "
+			+ "FROM results "
+			+ "JOIN logins ON idLogin=loginId "
+			+ "GROUP BY login ORDER BY avgMark DESC";
 	public static final String GET_AVG_MARK = "SELECT logins.name AS login, AVG(mark / 10.0) AS avgMark "
 			+ "FROM results "
 			+ "JOIN logins ON idLogin=loginId "

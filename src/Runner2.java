@@ -12,12 +12,11 @@ import java.util.ListIterator;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
 
 import org.xml.sax.SAXException;
 
 import by.gsu.epamlab.ConnectionManager;
+import by.gsu.epamlab.beans.DoubleScaleResult;
 import by.gsu.epamlab.beans.Result;
 import by.gsu.epamlab.parsers.ResultHandler;
 
@@ -67,7 +66,7 @@ public class Runner2 {
 			ps = con.prepareStatement(GET_RESULTS_BY_DATE);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				Result result = new Result(rs.getString(LOGIN_NAME_POSITION), rs.getString(TEST_NAME_POSITION),
+				Result result = new DoubleScaleResult(rs.getString(LOGIN_NAME_POSITION), rs.getString(TEST_NAME_POSITION),
 						rs.getDate(RESULT_DATE_POSITION), rs.getInt(RESULT_MARK_POSITION));
 				testResults.add(result);
 				System.out.println(result);

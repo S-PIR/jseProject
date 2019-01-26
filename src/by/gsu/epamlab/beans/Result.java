@@ -57,21 +57,11 @@ public class Result {
 	}
 	
 	public void setMark(String mark) {
-		try {
-			this.mark = Integer.parseInt(mark + "0");
-		} catch (NumberFormatException e) {
-			mark = mark.replaceAll("\\.", "");
-			this.mark = Integer.parseInt(mark);
-		}
+		this.mark = Integer.parseInt(mark);
 	}
 	
 	public String markToString() {
-		String res = String.valueOf(mark / 10);
-		int mod = mark % 10;
-		if (mod != 0) {
-			res += "." + mod;
-		}
-		return res;
+		return String.valueOf(mark);
 	}
 	
 	@Override

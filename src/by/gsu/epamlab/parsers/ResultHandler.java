@@ -6,13 +6,15 @@ import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import by.gsu.epamlab.beans.DoubleScaleResult;
 import by.gsu.epamlab.beans.Result;
 
 public class ResultHandler extends DefaultHandler {
 	private static enum ResultEnum {
 		RESULTS, STUDENT, LOGIN, TESTS, TEST; 
 	}
-	private List<Result> results = new ArrayList<Result>();
+	private List<Result> results = new ArrayList<>();
 	private ResultEnum currentEnum;
 	private String login;
 	
@@ -25,7 +27,7 @@ public class ResultHandler extends DefaultHandler {
 		currentEnum = ResultEnum.valueOf(localName.toUpperCase());
 		if (currentEnum == ResultEnum.TEST) {
 			final int TEST_INDEX = 0, DATE_INDEX = 1, MARK_INDEX = 2;
-			Result result = new Result();
+			Result result = new DoubleScaleResult();
 			result.setStudent(login);
 			result.setTest(attributes.getValue(TEST_INDEX));
 			result.setDate(attributes.getValue(DATE_INDEX));

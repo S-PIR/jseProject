@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,7 +50,7 @@ public class Runner1 {
 			}
 			ps.executeBatch();
 			ps.close();
-			rs = st.executeQuery(GET_AVG_MARK);
+			rs = st.executeQuery(GET_AVG_MARK_FOR_RESULT);
 			while (rs.next()) {
 				System.out.printf("%-10s%.2f\n", rs.getString(1), rs.getDouble(2));
 			}

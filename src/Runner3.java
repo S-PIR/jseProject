@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import by.gsu.epamlab.ConnectionManager;
+import by.gsu.epamlab.beans.HalfScaleResult;
 import by.gsu.epamlab.beans.Result;
 
 import static by.gsu.epamlab.constants.Constants.*;
@@ -35,7 +36,7 @@ public class Runner3 {
 					INSERT_INTO_LOGINS + "" + INSERT_INTO_TESTS + GET_LOGIN_ID + GET_TEST_ID + INSERT_INTO_RESULTS);
 			while (sc.hasNext()) {
 				String[] tmp = sc.nextLine().split(DELIMITER);
-				Result result = new Result();
+				Result result = new HalfScaleResult();
 				result.setStudent(tmp[0]);
 				result.setTest(tmp[1]);
 				result.setDate(tmp[2]);
@@ -60,7 +61,7 @@ public class Runner3 {
 			ps = con.prepareStatement(GET_RESULTS_BY_DATE);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				Result result = new Result(rs.getString(LOGIN_NAME_POSITION), 
+				Result result = new HalfScaleResult(rs.getString(LOGIN_NAME_POSITION), 
 						rs.getString(TEST_NAME_POSITION), 
 						rs.getDate(RESULT_DATE_POSITION), 
 						rs.getInt(RESULT_MARK_POSITION));
